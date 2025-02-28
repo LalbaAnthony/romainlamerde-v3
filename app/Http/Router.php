@@ -16,14 +16,14 @@ class Router
         $this->routes = $routes;
     }
 
-
     public function dispatch()
     {
         $uri = $this->request->uri;
         $method = $this->request->method;
 
         if (!isset($this->routes[$uri])) {
-            $this->response(404, ['error' => 'Not found']);
+            $this->view('404');
+            exit;
         }
 
         $route = $this->routes[$uri];

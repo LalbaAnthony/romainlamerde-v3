@@ -7,4 +7,7 @@ return [
         'POST' => 'ExampleController@create',
         'GET'  => 'ExampleController@read',
     ],
+    '/api/categories' => [
+            'GET'  => 'CategoryController@index',
+    ],
 ];

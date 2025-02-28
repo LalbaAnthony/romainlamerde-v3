@@ -1,6 +1,8 @@
 New:
     - [ ] Merge RLM v2 et php-framework here
-    - [ ] Re add layout
+    - [x] Re add layout
+    - [ ] Faire un sorte qu'on puisse faire un arbo complete dans les routes (recursif)
+    - [ ] Trouver moyen de faire middleware pour layout
     - [ ] Make routes for seeds, migrate, and reset + depl files + find a way to secure them
     - [ ] Fix import main CSS and JS
     - [ ] Fix import component css
