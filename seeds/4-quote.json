@@ -1,0 +1,10 @@
+[
+    {
+        "id": 1,
+        "place_id": 1,
+        "drug_id": 1,
+        "date": "2025-02-05",
+        "explanation": "Ils sont un dragon",
+        "is_verified": true
+    }
+]

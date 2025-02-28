@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "label": "Puzzle Together",
+        "is_verified": true
+    },
+    {
+        "id": 2,
+        "label": "Prononciation",
+        "is_verified": true
+    },
+    {
+        "id": 3,
+        "label": "Il est con",
+        "is_verified": true
+    },
+    {
+        "id": 4,
+        "label": "Comment ça mon reuf",
+        "is_verified": true
+    },
+    {
+        "id": 5,
+        "label": "C'est pas faux",
+        "is_verified": true
+    }
+]

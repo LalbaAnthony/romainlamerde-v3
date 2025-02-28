@@ -1,0 +1,8 @@
+[
+    {
+        "id": 1,
+        "label": "Alcool",
+        "to_censor": true,
+        "is_verified": true
+    }
+]

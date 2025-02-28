@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "Fred",
+        "password": "password",
+        "color": "#FF0000"
+    },
+    {
+        "id": 2,
+        "name": "Romain",
+        "password": "password",
+        "color": "#00FF00"
+    }
+]

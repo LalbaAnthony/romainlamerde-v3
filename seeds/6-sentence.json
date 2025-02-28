@@ -1,0 +1,14 @@
+[
+    {
+        "quote_id": 1,
+        "user_id": 2,
+        "arrangement": 1,
+        "content": "Je crapote pas"
+    },
+    {
+        "quote_id": 1,
+        "user_id": 1,
+        "arrangement": 2,
+        "content": "T'es un dragon ?"
+    }
+]

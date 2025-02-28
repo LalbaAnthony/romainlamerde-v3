@@ -1,0 +1,16 @@
+section .section-title-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+section h4.section-title-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+section span.section-title-hastage {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
