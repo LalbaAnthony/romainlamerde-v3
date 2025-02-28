@@ -1,3 +1,9 @@
+<?php
+
+use App\Component;
+
+?>
+
 <header class="header">
     <div class="header-title">
         <a href="<?= APP_URL ?>">

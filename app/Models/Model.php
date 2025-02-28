@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Database;
+use Exception;
+
 /**
  * Abstract base model class to provide Active Record style functionality.
  */

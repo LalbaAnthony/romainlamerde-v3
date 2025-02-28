@@ -23,13 +23,13 @@ class Router
         $method = $this->request->method;
 
         if (!isset($this->routes[$uri])) {
-            $this->response(404, ['error' => 'Route non trouvée']);
+            $this->response(404, ['error' => 'Not found']);
         }
 
         $route = $this->routes[$uri];
 
         if (!isset($route[$method])) {
-            $this->response(405, ['error' => 'Méthode non autorisée']);
+            $this->response(405, ['error' => 'Method not allowed']);
         }
 
         list($controllerName, $action) = explode('@', $route[$method]);
@@ -37,13 +37,13 @@ class Router
         $controllerClass = 'App\\Controller\\' . $controllerName;
 
         if (!class_exists($controllerClass)) {
-            $this->response(500, ['error' => "Le contrôleur {$controllerName} n'existe pas"]);
+            $this->response(500, ['error' => "{$controllerName} does not exist"]);
         }
 
         $controller = new $controllerClass();
 
         if (!method_exists($controller, $action)) {
-            $this->response(500, ['error' => "La méthode {$action} n'existe pas dans le contrôleur {$controllerName}"]);
+            $this->response(500, ['error' => "{$action} method does not exist"]);
         }
 
         call_user_func([$controller, $action], $this->request);

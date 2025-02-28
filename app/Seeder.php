@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Exception;
+
 /**
  * Class Seeder
  *

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Exception;
+
 /**
  * A simple component rendering system.
  *
@@ -17,12 +19,12 @@ class Component
     /**
      * Base directory for components.
      */
-    private const COMPONENTS_PATH = APP_PATH . '/components';
+    private const COMPONENTS_PATH = APP_PATH . '/ressources/components';
 
     /**
      * Base directory for components.
      */
-    private const COMPONENTS_URL = APP_URL . '/components';
+    private const COMPONENTS_URL = APP_URL . '/ressources/components';
 
     /**
      * Associative array of loaded CSS files.

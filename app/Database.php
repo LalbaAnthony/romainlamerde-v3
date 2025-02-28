@@ -2,6 +2,11 @@
 
 namespace App;
 
+use PDO;
+use PDOException;
+use PDOStatement;
+use Exception;
+
 /**
  * Class Database
  * 
@@ -37,12 +42,12 @@ class Database
     /**
      * Database class constructor.
      */
-    public function __construct(string $dbHost = null, string $dbName = null, string $dbUser = null, string $dbPass = null)
+    public function __construct(string $dbHost = '', string $dbName = '', string $dbUser = '', string $dbPass = '')
     {
-        $this->dbHost = $dbHost ?? DB_HOST;
-        $this->dbName = $dbName ?? DB_NAME;
-        $this->dbUser = $dbUser ?? DB_USER;
-        $this->dbPass = $dbPass ?? DB_PASSWORD;
+        $this->dbHost = $dbHost;
+        $this->dbName = $dbName;
+        $this->dbUser = $dbUser;
+        $this->dbPass = $dbPass;
         $this->connect();
     }
 
@@ -175,7 +180,7 @@ class Database
             $statement->execute();
             return $statement;
         } catch (PDOException $e) {
-            if (APP_DEBUG) dd($this->mergeQueryAndParams($query, $params));
+            if (APP_DEBUG) Helpers::dd($this->mergeQueryAndParams($query, $params));
             throw new Exception("Error executing the query: " . $e->getMessage());
         }
     }

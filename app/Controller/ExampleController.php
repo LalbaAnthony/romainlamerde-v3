@@ -35,6 +35,8 @@ class ExampleController extends Controller
 
     public function home(Request $request)
     {
+        $this->layout('top');
         $this->view('home');
+        $this->layout('bottom');
     }
 }

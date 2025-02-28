@@ -1,3 +1,5 @@
+<?php use App\Component; ?>
+
 <section>
     <?php Component::display('section-title', ['title' => 'Ma première section', 'color' => 'red'], ['css' => true]) ?>
     test

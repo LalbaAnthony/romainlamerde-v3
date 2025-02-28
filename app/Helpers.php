@@ -15,22 +15,22 @@ class Helpers
         //
     }
 
-    public function env(string $key, mixed $default = null): mixed
+    public static function env(string $key, mixed $default = null): mixed
     {
         return $_ENV[$key] ?? $default;
     }
 
-    public function currentDate(): string
+    public static function currentDate(): string
     {
         return date('Y-m-d');
     }
 
-    public function currentDateTime(): string
+    public static function currentDateTime(): string
     {
         return date('Y-m-d H:i:s');
     }
 
-    public function dd(mixed $var): void
+    public static function dd(mixed $var): void
     {
         $args = func_get_args();
         $bt = debug_backtrace();
@@ -44,7 +44,7 @@ class Helpers
         echo "</pre>";
     }
 
-    public function slugify(string $string): string
+    public static function slugify(string $string): string
     {
         if (!$string || empty($string)) return '';
         $string = strtolower($string);

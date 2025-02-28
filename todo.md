@@ -1,5 +1,9 @@
 New:
     - [ ] Merge RLM v2 et php-framework here
+    - [ ] Re add layout
+    - [ ] Make routes for seeds, migrate, and reset + depl files + find a way to secure them
+    - [ ] Fix import main CSS and JS
+    - [ ] Fix import component css
     - [ ] Traiter todo du code
     - [ ] Faire routing system with https://github.com/LalbaAnthony/php-framework then delete it
     - [ ] Implement rollbacks for migrations, seeders, models save, ...
