@@ -23,6 +23,6 @@ class CategoryController extends Controller
             'sort' => $sort,
         ]);
 
-        $this->response(200, $categories);
+        $this->response(200, $categories, ['cache' => 600]);
     }
 }

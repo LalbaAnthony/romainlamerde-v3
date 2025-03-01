@@ -37,11 +37,12 @@ trait Utils
      * @param array $headers
      * @return void
      */
-    public function response(int $status, mixed $data = null, array $headers = ['methods' => ['GET', 'POST', 'PUT', 'DELETE'], 'origin' => '*']): void
+    public function response(int $status, mixed $data = null, array $headers = ['methods' => ['GET', 'POST', 'PUT', 'DELETE'], 'origin' => '*', 'cache' => 0]): void
     {
         http_response_code($status);
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
         header("Content-type: application/json; charset=utf-8");
+
         if (is_array($headers) && !empty($headers)) {
             if (isset($headers['method'])) {
                 header('Access-Control-Allow-Methods: ' . implode(', ', $headers['methods']));
@@ -49,7 +50,15 @@ trait Utils
             if (isset($headers['origin'])) {
                 header('Access-Control-Allow-Origin: ' . $headers['origin']);
             }
+            if (isset($headers['cache']) && $headers['cache'] > 0) {
+                $seconds = $headers['cache'];
+                $ts = gmdate("D, d M Y H:i:s", time() + $seconds) . " GMT";
+                header("Expires: $ts");
+                header("Pragma: cache");
+                header("Cache-Control: max-age=$seconds");
+            }
         }
+
         echo json_encode($data);
         exit;
     }
