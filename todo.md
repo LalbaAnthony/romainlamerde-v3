@@ -1,10 +1,10 @@
 New:
     - [x] Refaire fonctionner chaque feature de la v2
     - [x] Re add layout
+    - [ ] Trouver moyen de faire middleware pour layout + séparer entête HTML et header stylisé de la page
     - [ ] Faire dossier view/api dans controllers
-    - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
     - [ ] Error handling: make it more user friendly, create exeptions for each type of error
-    - [ ] Trouver moyen de faire middleware pour layout
+    - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
     - [ ] Make routes for seeds, migrate, and reset + depl files + find a way to secure them
     - [ ] Traiter todo du code
     - [ ] Implement rollbacks for migrations, seeders, models save, ...
