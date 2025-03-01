@@ -10,16 +10,31 @@ namespace App;
 class Helpers
 {
 
+    /**
+     * Get current date in Y-m-d format.
+     *
+     * @return string
+     */
     public static function currentDate(): string
     {
         return date('Y-m-d');
     }
 
+    /**
+     * Get current date and time in Y-m-d H:i:s format.
+     *
+     * @return string
+     */
     public static function currentDateTime(): string
     {
         return date('Y-m-d H:i:s');
     }
 
+    /**
+     * Get current date and time in Y-m-d H:i:s format.
+     *
+     * @return string
+     */
     public static function dd(mixed $var): void
     {
         $args = func_get_args();
@@ -34,6 +49,12 @@ class Helpers
         echo "</pre>";
     }
 
+    /**
+     * Slugify a string.
+     *
+     * @param string $string
+     * @return string
+     */
     public static function slugify(string $string): string
     {
         if (!$string || empty($string)) return '';
