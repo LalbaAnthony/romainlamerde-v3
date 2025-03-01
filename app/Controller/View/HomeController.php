@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\View;
 
 use App\Http\Request;
 use App\Models\Quote;
+use App\Controller\Controller;
 
-class HomeVIEWController extends Controller
+class HomeController extends Controller
 {
     public function index(Request $request)
     {

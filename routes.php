@@ -1,12 +1,12 @@
 <?php
 return [
     '/' => [
-        'GET'  => 'HomeVIEWController@index',
+        'GET'  => 'View\\HomeController@index',
     ],
     '/404' => [
-        'GET'  => 'ErrorVIEWController@index',
+        'GET'  => 'View\\ErrorController@index',
     ],
     '/api/categories' => [
-        'GET'  => 'CategoryAPIController@index',
+        'GET'  => 'API\\CategoryController@index',
     ],
 ];

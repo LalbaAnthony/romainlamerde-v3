@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\View;
 
 use App\Http\Request;
+use App\Controller\Controller;
 
-class ErrorVIEWController  extends Controller
+class ErrorController  extends Controller
 {
     public function index(Request $request)
     {

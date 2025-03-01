@@ -42,12 +42,12 @@ class Router
             $this->response(405, ['error' => 'Method not allowed']);
         }
 
-        list($controllerName, $action) = explode('@', $route[$method]);
+        list($controllerPath, $action) = explode('@', $route[$method]);
 
-        $controllerClass = 'App\\Controller\\' . $controllerName;
+        $controllerClass = 'App\\Controller\\' . $controllerPath;
 
         if (!class_exists($controllerClass)) {
-            $this->response(500, ['error' => "{$controllerName} does not exist"]);
+            $this->response(500, ['error' => "{$controllerPath} does not exist"]);
         }
 
         $controller = new $controllerClass();
