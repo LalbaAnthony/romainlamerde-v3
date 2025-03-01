@@ -22,7 +22,9 @@ class Router
         $method = $this->request->method;
 
         if (!isset($this->routes[$uri])) {
+            $this->layout('top');
             $this->view('404');
+            $this->layout('bottom');
             exit;
         }
 

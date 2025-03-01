@@ -7,12 +7,19 @@ trait Utils
     const VIEWS_PATH = __DIR__ . '/../../ressources/views/';
     const LAYOUTS_PATH = __DIR__ . '/../../ressources/layouts/';
 
-    public function response(int $status, mixed $data): never
+    public function response(int $status, mixed $data, array $headers = ['methods' => ['GET', 'POST', 'PUT', 'DELETE'], 'origin' => '*']): void
     {
-        // TODO : Add Access-Control-Allow-Methods and Access-Control-Allow-Headers
         http_response_code($status);
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
         header("Content-type: application/json; charset=utf-8");
+        if (is_array($headers) && !empty($headers)) {
+            if (isset($headers['method'])) {
+                header('Access-Control-Allow-Methods: ' . implode(', ', $headers['methods']));
+            }
+            if (isset($headers['origin'])) {
+                header('Access-Control-Allow-Origin: ' . $headers['origin']);
+            }
+        }
         echo json_encode($data);
         exit;
     }

@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Http\Request;
 use App\Models\Category;
 
-class CategoryController extends Controller
+class CategoryAPIController extends Controller
 {
     const DEFAULT_PER_PAGE = 10;
     const DEFAULT_PAGE = 1;

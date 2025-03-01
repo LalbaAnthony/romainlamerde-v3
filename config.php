@@ -9,7 +9,7 @@ define('APP_NAME_URL', 'romainlamerde.com');
 define('APP_DESCRIPTION', 'Site répertoriant toutes les bêtises dites par Romain et ses compatriotes.');
 define('APP_AUTHOR', 'Anthony Lalba');
 define('APP_CENSORSHIP', false);
-define('APP_VERSION', '0.0.1');
+define('APP_VERSION', '3.0.1');
 define('APP_ROOT', '/projects/romainlamerde-v3');
 define('APP_PATH', '/xampp/htdocs/projects/romainlamerde-v3');
 define('APP_URL', 'http://localhost/projects/romainlamerde-v3');

@@ -1,6 +1,6 @@
 <?php
 return [
-    '/home' => [
+    '/' => [
         'GET'  => 'ExampleController@home',
     ],
     '/api/example' => [
@@ -8,6 +8,6 @@ return [
         'GET'  => 'ExampleController@read',
     ],
     '/api/categories' => [
-            'GET'  => 'CategoryController@index',
+            'GET'  => 'CategoryAPIController@index',
     ],
 ];

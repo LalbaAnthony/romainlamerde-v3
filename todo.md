@@ -1,5 +1,5 @@
 New:
-    - [ ] Merge RLM v2 et php-framework here
+    - [ ] Refaire fonctionner chaque feature de la v2
     - [x] Re add layout
     - [ ] Faire un sorte qu'on puisse faire un arbo complete dans les routes (recursif)
     - [ ] Trouver moyen de faire middleware pour layout

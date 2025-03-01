@@ -10,16 +10,6 @@ namespace App;
 class Helpers
 {
 
-    public function __construct()
-    {
-        //
-    }
-
-    public static function env(string $key, mixed $default = null): mixed
-    {
-        return $_ENV[$key] ?? $default;
-    }
-
     public static function currentDate(): string
     {
         return date('Y-m-d');
