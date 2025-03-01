@@ -1,8 +1,7 @@
 New:
     - [x] Refaire fonctionner chaque feature de la v2
     - [x] Re add layout
-    - [ ] Fqire PHP doc sur classes et méthodes
-    - [ ] Trouver moyen de faire middleware pour layout + séparer entête HTML et header stylisé de la page
+    - [ ] Séparer entête HTML et header stylisé de la page + Remplacer les $this->layout('top'); et les $this->layout('bottom'); par des Compoent::display()
     - [ ] Faire dossier view/api dans controllers
     - [ ] Error handling: make it more user friendly, create exeptions for each type of error
     - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
@@ -19,6 +18,7 @@ New:
     - [ ] Pas Interface admin mais boutons en plus pour les admins
     - [ ] Faire liste des dernieres quote associé à l'utilisateur actuelement connecté
     - [ ] htaccess apache pour redirection fichier static etc
+    - [ ] Faire PHP doc sur classes et méthodes
 
 From RLM v1:
     - [ ] Existant

@@ -7,6 +7,36 @@ trait Utils
     const VIEWS_PATH = __DIR__ . '/../../ressources/views/';
     const LAYOUTS_PATH = __DIR__ . '/../../ressources/layouts/';
 
+    /**
+     * Redirect to a different page
+     * 
+     * @return void
+     */
+    public function redirect(string $uri = '/'): void
+    {
+        header('Location: ' . APP_URL . $uri);
+        exit;
+    }
+
+    /**
+     * Send a 404 response
+     * 
+     * @return void
+     */
+    public function error(): void
+    {
+        header('HTTP/1.1 404 Not Found');
+        exit;
+    }
+
+    /**
+     * Send a JSON response
+     * 
+     * @param int $status
+     * @param mixed $data
+     * @param array $headers
+     * @return void
+     */
     public function response(int $status, mixed $data = null, array $headers = ['methods' => ['GET', 'POST', 'PUT', 'DELETE'], 'origin' => '*']): void
     {
         http_response_code($status);
@@ -24,6 +54,13 @@ trait Utils
         exit;
     }
 
+    /**
+     * Render a view
+     * 
+     * @param string $name
+     * @param mixed $data
+     * @return void
+     */
     public function view(string $name, mixed $data = null): void
     {
         $path = self::VIEWS_PATH . $name . '.php';
@@ -36,11 +73,18 @@ trait Utils
             $this->response(500, ['error' => "{$name} is not readable. Ensure that the file has the correct permissions."]);
         }
 
-        extract($data);
+        if ($data) extract($data);
         require_once $path;
-        unset($data);
+        if ($data) unset($data);
     }
 
+    /**
+     * Render a layout
+     * 
+     * @param string $name
+     * @param mixed $data
+     * @return void
+     */
     public function layout(string $name, mixed $data = null): void
     {
         $path = self::LAYOUTS_PATH . $name . '.php';
@@ -53,8 +97,8 @@ trait Utils
             $this->response(500, ['error' => "{$name} is not readable. Ensure that the file has the correct permissions."]);
         }
 
-        extract($data);
+        if ($data) extract($data);
         require_once $path;
-        unset($data);
+        if ($data) unset($data);
     }
 }

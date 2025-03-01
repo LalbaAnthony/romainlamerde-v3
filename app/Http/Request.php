@@ -11,6 +11,9 @@ class Request
     public $body;
     public $params;
 
+    /**
+     * Request constructor.
+     */
     public function __construct()
     {
         $this->method = $_SERVER['REQUEST_METHOD'] ?? self::DEFAULT_METHOD;
@@ -19,7 +22,10 @@ class Request
         $this->params = $_GET;
     }
 
-    public function getJson(): mixed
+    /**
+     * @return mixed
+     */
+    public function json(): mixed
     {
         return json_decode($this->body, true);
     }

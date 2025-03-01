@@ -10,22 +10,30 @@ class Router
     private $request;
     private $routes;
 
+    /**
+     * Router constructor.
+     * 
+     * @param Request $request
+     * @param array $routes
+     */
     public function __construct(Request $request, array $routes)
     {
         $this->request = $request;
         $this->routes = $routes;
     }
 
-    public function dispatch()
+    /**
+     * Dispatch the request to the appropriate controller
+     * 
+     * @return void
+     */
+    public function dispatch(): void
     {
         $uri = $this->request->uri;
         $method = $this->request->method;
 
         if (!isset($this->routes[$uri])) {
-            $this->layout('top');
-            $this->view('404');
-            $this->layout('bottom');
-            exit;
+            $this->redirect('/404');
         }
 
         $route = $this->routes[$uri];
