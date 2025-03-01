@@ -7,7 +7,7 @@ trait Utils
     const VIEWS_PATH = __DIR__ . '/../../ressources/views/';
     const LAYOUTS_PATH = __DIR__ . '/../../ressources/layouts/';
 
-    public function response(int $status, mixed $data, array $headers = ['methods' => ['GET', 'POST', 'PUT', 'DELETE'], 'origin' => '*']): void
+    public function response(int $status, mixed $data = null, array $headers = ['methods' => ['GET', 'POST', 'PUT', 'DELETE'], 'origin' => '*']): void
     {
         http_response_code($status);
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
@@ -24,7 +24,7 @@ trait Utils
         exit;
     }
 
-    public function view(string $name): void
+    public function view(string $name, mixed $data = null): void
     {
         $path = self::VIEWS_PATH . $name . '.php';
 
@@ -36,10 +36,12 @@ trait Utils
             $this->response(500, ['error' => "{$name} is not readable. Ensure that the file has the correct permissions."]);
         }
 
+        extract($data);
         require_once $path;
+        unset($data);
     }
 
-    public function layout(string $name): void
+    public function layout(string $name, mixed $data = null): void
     {
         $path = self::LAYOUTS_PATH . $name . '.php';
 
@@ -51,6 +53,8 @@ trait Utils
             $this->response(500, ['error' => "{$name} is not readable. Ensure that the file has the correct permissions."]);
         }
 
+        extract($data);
         require_once $path;
+        unset($data);
     }
 }

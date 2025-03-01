@@ -1,13 +1,12 @@
 New:
-    - [ ] Refaire fonctionner chaque feature de la v2
+    - [x] Refaire fonctionner chaque feature de la v2
     - [x] Re add layout
-    - [ ] Faire un sorte qu'on puisse faire un arbo complete dans les routes (recursif)
+    - [ ] Faire dossier view/api dans controllers
+    - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
+    - [ ] Error handling: make it more user friendly, create exeptions for each type of error
     - [ ] Trouver moyen de faire middleware pour layout
     - [ ] Make routes for seeds, migrate, and reset + depl files + find a way to secure them
-    - [ ] Fix import main CSS and JS
-    - [ ] Fix import component css
     - [ ] Traiter todo du code
-    - [ ] Faire routing system with https://github.com/LalbaAnthony/php-framework then delete it
     - [ ] Implement rollbacks for migrations, seeders, models save, ...
     - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
     - [ ] Refaire tout les models pour évitier les injections SQL (findAll, ...)

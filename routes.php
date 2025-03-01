@@ -1,13 +1,9 @@
 <?php
 return [
     '/' => [
-        'GET'  => 'ExampleController@home',
-    ],
-    '/api/example' => [
-        'POST' => 'ExampleController@create',
-        'GET'  => 'ExampleController@read',
+        'GET'  => 'HomeVIEWController@index',
     ],
     '/api/categories' => [
-            'GET'  => 'CategoryAPIController@index',
+        'GET'  => 'CategoryAPIController@index',
     ],
 ];
