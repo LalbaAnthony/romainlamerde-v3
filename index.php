@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Router;
+use App\Http\Request;
 use App\Database;
 use App\Models\Model;
 use App\Migrator;
@@ -24,7 +26,7 @@ session_start();
 
 $routes = require_once __DIR__ . '/routes.php';
 
-$request = new App\Http\Request();
+$request = new Request();
 
-$router = new App\Http\Router($request, $routes);
+$router = new Router($request, $routes);
 $router->dispatch();
