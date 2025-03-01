@@ -1,6 +1,7 @@
 New:
     - [x] Refaire fonctionner chaque feature de la v2
     - [x] Re add layout
+    - [ ] Fqire PHP doc sur classes et méthodes
     - [ ] Trouver moyen de faire middleware pour layout + séparer entête HTML et header stylisé de la page
     - [ ] Faire dossier view/api dans controllers
     - [ ] Error handling: make it more user friendly, create exeptions for each type of error
