@@ -1,7 +1,7 @@
 New:
     - [x] Refaire fonctionner chaque feature de la v2
     - [x] Re add layout
-    - [ ] Séparer entête HTML et header stylisé de la page + Remplacer les $this->layout('top'); et les $this->layout('bottom'); par des Compoent::display()
+    - [ ] Séparer entête HTML et header stylisé de la page + Remplacer les $this->layout('top'); et les $this->layout('bottom'); par des Compoent::display() (utiliser ob_start et ob_get_clean ?)
     - [ ] Faire dossier view/api dans controllers
     - [ ] Error handling: make it more user friendly, create exeptions for each type of error
     - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
