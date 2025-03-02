@@ -248,6 +248,26 @@ abstract class Model
     }
 
     /**
+     * Retrieve a record by its primary key.
+     *
+     * @return static|null
+     * @throws Exception
+     */
+    public static function findOneRandom(): ?static
+    {
+        if (!static::$db) throw new Exception("Database connection not set in " . static::class);
+
+        $sql = "SELECT * FROM " . static::getTableName() . " ORDER BY RAND() LIMIT 1";
+        $result = static::$db->query($sql);
+
+        if ($result && count($result) > 0) {
+            return new static($result[0]);
+        }
+
+        return null;
+    }
+
+    /**
      * Retrieve records matching the given conditions.
      *
      * @param array $params

@@ -88,7 +88,7 @@ header.header {
 
 .header-search input[type="search"] {
     max-width: 100%;
-    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    padding: 0.5rem 3rem 0.5rem 1rem;
     color: var(--dark);
     border-radius: 25px;
     border: none;
