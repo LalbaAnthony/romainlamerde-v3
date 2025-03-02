@@ -5,7 +5,6 @@ namespace App\Http;
 trait Utils
 {
     const VIEWS_PATH = __DIR__ . '/../../ressources/views/';
-    const LAYOUTS_PATH = __DIR__ . '/../../ressources/layouts/';
 
     /**
      * Redirect to a different page
@@ -82,32 +81,46 @@ trait Utils
             $this->response(500, ['error' => "{$name} is not readable. Ensure that the file has the correct permissions."]);
         }
 
+        $this->openHtml();
         if ($data) extract($data);
         require_once $path;
         if ($data) unset($data);
+        $this->closeHtml();
     }
 
     /**
-     * Render a layout
+     * Open the HTML document
      * 
-     * @param string $name
-     * @param mixed $data
      * @return void
      */
-    public function layout(string $name, mixed $data = null): void
+    private function openHtml(): void
     {
-        $path = self::LAYOUTS_PATH . $name . '.php';
+        echo '<!DOCTYPE html>';
+        echo '<html lang="fr">';
+        echo '<head>';
+        echo '<meta charset="UTF-8">';
+        echo '<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />';
+        echo '<meta name="description" content="' . APP_DESCRIPTION . '" />';
+        echo '<meta name="author" content="' . APP_AUTHOR . '" />';
+        echo '<title>' . APP_NAME_LONG . '</title>';
+        echo '<link rel="icon" type="image/x-icon" href="public/favicon.ico" />';
+        echo '<link href="' . APP_URL . '/ressources/css/main.css" rel="stylesheet" />';
+        echo '<script src="' . APP_URL . '/ressources/js/main.js"></script>';
+        echo '<link rel="preconnect" href="https://fonts.googleapis.com">';
+        echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
+        echo '<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">';
+        echo '</head>';
+        echo '<body>';
+    }
 
-        if (!file_exists($path)) {
-            $this->response(500, ['error' => "{$name} has not been found"]);
-        }
-
-        if (!is_readable($path)) {
-            $this->response(500, ['error' => "{$name} is not readable. Ensure that the file has the correct permissions."]);
-        }
-
-        if ($data) extract($data);
-        require_once $path;
-        if ($data) unset($data);
+    /**
+     * Close the HTML document
+     * 
+     * @return void
+     */
+    private function closeHtml(): void
+    {
+        echo '</body>';
+        echo '</html>';
     }
 }

@@ -14,8 +14,6 @@ class HomeController extends Controller
             'perPage' => 3,
         ]);
 
-        $this->layout('top');
         $this->view('home', compact('quotes'));
-        $this->layout('bottom');
     }
 }
