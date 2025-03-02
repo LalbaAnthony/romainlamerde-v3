@@ -26,7 +26,7 @@ class Migrator
     /**
      * Path to the migrations directory.
      */
-    private const MIGRATIONS_PATH = APP_PATH . '/migrations';
+    private const MIGRATIONS_PATH = __DIR__ . '/../migrations';
 
     /**
      * Set the database connection.

@@ -18,9 +18,6 @@ return [
         'GET'  => [
             'type' => 'view',
             'path' => 'View\\ErrorController@index',
-            'hooks' => [
-                'after' => ['components' => ['footer']],
-            ]
         ],
     ],
     // =================================================

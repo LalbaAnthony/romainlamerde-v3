@@ -19,7 +19,7 @@ class Component
     /**
      * Base directory for components.
      */
-    private const COMPONENTS_PATH = APP_PATH . '/ressources/components';
+    private const COMPONENTS_PATH = __DIR__ . '/../ressources/components';
 
     /**
      * Base directory for components.

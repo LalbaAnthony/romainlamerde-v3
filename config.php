@@ -16,7 +16,6 @@ define('APP_VERSION', '3.0.1');
  * App configuration
  */
 define('APP_ROOT', '/projects/romainlamerde-v3');
-define('APP_PATH', '/xampp/htdocs/projects/romainlamerde-v3');
 define('APP_URL', 'http://localhost/projects/romainlamerde-v3');
 define('APP_DEBUG', true);
 define('APP_ENV', 'development'); // 'development' or 'production'

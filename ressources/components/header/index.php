@@ -14,7 +14,7 @@ use App\Component;
         <input id="header-search-input" type="search" name="search" placeholder="Rechercher" />
     </form>
     <div class="header-login">
-        <?= Component::display('button', ['href' => APP_URL . '/login', 'label' => 'Connexion', 'outline' => true], ['css' => true]) ?>
+        <?= Component::display('button', ['href' => APP_URL . '/login', 'label' => 'Connexion', 'color' => 'dark', 'outline' => true], ['css' => true]) ?>
     </div>
 </header>
 

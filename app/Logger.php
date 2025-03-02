@@ -14,7 +14,7 @@ class Logger
     /**
      * Path to the log files directory.
      */
-    private const LOG_PATH = APP_PATH . '/logs';
+    private const LOG_PATH = __DIR__ . '/../logs/';
 
     /**
      * Types of log messages.

@@ -26,7 +26,7 @@ class Seeder
     /**
      * Path to the seeds directory.
      */
-    private const SEEDS_PATH = APP_PATH . '/seeds';
+    private const SEEDS_PATH = __DIR__ . '/../seeds';
 
     /**
      * Set the database connection.
