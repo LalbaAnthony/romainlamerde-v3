@@ -81,11 +81,9 @@ trait Utils
             $this->response(500, ['error' => "{$name} is not readable. Ensure that the file has the correct permissions."]);
         }
 
-        $this->openHtml();
         if ($data) extract($data);
         require_once $path;
         if ($data) unset($data);
-        $this->closeHtml();
     }
 
     /**
@@ -95,6 +93,7 @@ trait Utils
      */
     private function openHtml(): void
     {
+        echo "hey";
         echo '<!DOCTYPE html>';
         echo '<html lang="fr">';
         echo '<head>';

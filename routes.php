@@ -1,12 +1,35 @@
 <?php
+
 return [
+    // =================================================
+    // Views
+    // =================================================
     '/' => [
-        'GET'  => 'View\\HomeController@index',
+        'GET'  => [
+            'type' => 'view',
+            'path' => 'View\\HomeController@index',
+            'hooks' => [
+                'before' => ['components' => ['header']],
+                'after' => ['components' => ['footer']],
+            ]
+        ],
     ],
     '/404' => [
-        'GET'  => 'View\\ErrorController@index',
+        'GET'  => [
+            'type' => 'view',
+            'path' => 'View\\ErrorController@index',
+            'hooks' => [
+                'before' => ['components' => ['header']],
+                'after' => ['components' => ['footer']],
+            ]
+        ],
     ],
+    // =================================================
+    // API
+    // =================================================
     '/api/categories' => [
-        'GET'  => 'API\\CategoryController@index',
+        'GET'  => [
+            'path' => 'API\\CategoryController@index',
+        ],
     ],
 ];
