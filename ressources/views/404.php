@@ -4,12 +4,13 @@ use App\Component;
 
 ?>
 
-<div class="error-container">
-    <h1 class="error-title">404</h1>
-    <p class="error-description">Oups! Il semblerait que la page que tu cherche n'existe pas &#x1F614;</p>
-    <?= Component::display('button', ['href' => APP_URL , 'label' => 'Rentrer à la maison', 'color' => 'dark'], ['css' => true]) ?>
-</div>
-
+<main>
+    <div class="error-container">
+        <h1 class="error-title">404</h1>
+        <p class="error-description">Oups! Il semblerait que la page que tu cherche n'existe pas &#x1F614;</p>
+        <?= Component::display('button', ['href' => APP_URL, 'label' => 'Rentrer à la maison', 'color' => 'dark'], ['css' => true]) ?>
+    </div>
+</main>
 
 <style>
     .error-container {

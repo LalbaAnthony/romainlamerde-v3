@@ -23,4 +23,3 @@ use App\Component;
 
 <body>
     <?php Component::display('header', [], ['css' => true, 'js' => true]); ?>
-    <main>

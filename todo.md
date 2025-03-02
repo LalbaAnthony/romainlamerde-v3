@@ -5,8 +5,6 @@ New:
     - [ ] Séparer entête HTML et header stylisé de la page + Remplacer les $this->layout('top'); et les $this->layout('bottom'); par des Compoent::display() (utiliser ob_start et ob_get_clean ?)
     - [ ] Error handling: make it more user friendly, create exeptions for each type of error
     - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
-    - [ ] Make routes for seeds, migrate, and reset + depl files + find a way to secure them
-    - [ ] Traiter todo du code
     - [ ] Implement rollbacks for migrations, seeders, models save, ...
     - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
     - [ ] Refaire tout les models pour évitier les injections SQL (findAll, ...)
@@ -19,6 +17,7 @@ New:
     - [ ] Faire liste des dernieres quote associé à l'utilisateur actuelement connecté
     - [ ] htaccess apache pour redirection fichier static etc
     - [ ] Faire PHP doc sur classes et méthodes
+    - [ ] Traiter todo du code
 
 From RLM v1:
     - [ ] Existant
