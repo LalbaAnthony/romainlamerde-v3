@@ -23,7 +23,7 @@ class CategoryController extends Controller
             'sort' => $sort,
         ]);
 
-        $status = (count((array) $return['data']) > 0 ? 200 : 204);
+        $status = count((array) $return['data']) > 0 ? 200 : 204;
 
         $this->response($status, $return);
     }
