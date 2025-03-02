@@ -16,13 +16,15 @@ class CategoryController extends Controller
         $page = (int) (isset($request->params['page']) ? $request->params['page'] : parent::DEFAULT_PAGE);
         $sort = (array) (isset($request->params['sort']) ? $request->params['sort'] : parent::DEFAULT_SORT);
 
-        $categories = Category::findAllBy([
+        $return = Category::findAllBy([
             'search' => $search,
             'perPage' => $perPage,
             'page' => $page,
             'sort' => $sort,
         ]);
 
-        $this->response(200, $categories, ['cache' => 600]);
+        $status = (count((array) $return['data']) > 0 ? 200 : 204);
+
+        $this->response($status, $return);
     }
 }

@@ -28,6 +28,7 @@ return [
     // =================================================
     '/api/categories' => [
         'GET'  => [
+            'type' => 'api',
             'path' => 'API\\CategoryController@index',
         ],
     ],

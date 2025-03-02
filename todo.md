@@ -3,7 +3,6 @@ New:
     - [x] Re add layout
     - [x] Faire dossier view/api dans controllers
     - [x] Séparer entête HTML et header stylisé de la page + Remplacer les $this->layout('top'); et les $this->layout('bottom'); par des Compoent::display() (utiliser ob_start et ob_get_clean ?)
-    - [ ] Error handling: make it more user friendly, create exeptions for each type of error
     - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
     - [ ] Implement rollbacks for migrations, seeders, models save, ...
     - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
@@ -13,6 +12,7 @@ New:
     - [ ] Changer system d'erreur pour ne plus avoir de Exeption
     - [ ] Controllers
     - [ ] API
+    - [ ] Error handling: make it more user friendly, create exeptions for each type of error
     - [ ] Pas Interface admin mais boutons en plus pour les admins
     - [ ] Faire liste des dernieres quote associé à l'utilisateur actuelement connecté
     - [ ] htaccess apache pour redirection fichier static etc
