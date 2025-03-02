@@ -11,7 +11,7 @@ trait Utils
      * 
      * @return void
      */
-    public function redirect(string $uri = '/'): void
+    public static function redirect(string $uri = '/'): void
     {
         header('Location: ' . APP_URL . $uri);
         exit;
@@ -22,7 +22,7 @@ trait Utils
      * 
      * @return void
      */
-    public function error(): void
+    public static function error(): void
     {
         header('HTTP/1.1 404 Not Found');
         exit;
@@ -36,7 +36,7 @@ trait Utils
      * @param array $headers
      * @return void
      */
-    public function response(int $status, mixed $data = null, array $headers = ['methods' => ['GET', 'POST', 'PUT', 'DELETE'], 'origin' => '*', 'cache' => 0]): void
+    public function response(int $status, mixed $data = null, array $headers = ['methods' => ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 'origin' => '*', 'cache' => 0]): void
     {
         http_response_code($status);
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');

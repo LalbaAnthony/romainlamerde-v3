@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Database;
+use App\Helpers;
 use Exception;
 
 /**
@@ -46,7 +47,7 @@ abstract class Model
     {
         static::$db = null;
     }
-    
+
     /**
      * Fill the model's properties from an array.
      *
@@ -80,13 +81,12 @@ abstract class Model
         $attributes = $this->toArray();
 
         foreach ($attributes as $column => $value) {
-            if ($column === 'updated_at') $value = currentDateTime();
-            if ($column === 'created_at' && !$isUpdate) $value = currentDateTime();
+            if ($column === 'updated_at') $value = Helpers::currentDateTime();
+            if ($column === 'created_at' && !$isUpdate) $value = Helpers::currentDateTime();
         }
 
         if ($isUpdate) {
             // UPDATE existing record
-
             $columns = array_keys($attributes);
             $placeholders = implode(", ", array_map(fn($column) => "$column = ?", $columns));
             $params = array_values($attributes);
@@ -148,9 +148,7 @@ abstract class Model
         }
         $fresh = static::findOne($this->$primaryKey);
         if ($fresh) {
-            foreach ($fresh->toArray() as $key => $value) {
-                $this->$key = $value;
-            }
+            $this->fill($fresh->toArray());
             return true;
         }
         return false;
@@ -252,7 +250,7 @@ abstract class Model
     /**
      * Retrieve records matching the given conditions.
      *
-     * @param array $conditions  e.g., ['author' => 'Mark Twain']
+     * @param array $params
      * @return static[]
      * @throws Exception
      */
@@ -261,52 +259,84 @@ abstract class Model
         if (!static::$db) throw new Exception("Database connection not set in " . static::class);
         if (empty($params)) return static::findAll();
 
+        // Set default values for optional parameters.
         if (!isset($params['sort']) || !$params['sort']) $params['sort'] = static::DEFAULT_SORT;
         if (!isset($params['perPage']) || !$params['perPage']) $params['perPage'] = static::DEFAULT_PER_PAGE;
         if (!isset($params['page']) || !$params['page']) $params['page'] = static::DEFAULT_PAGE;
 
+        // Calculate pagination values.
         if (isset($params['page']) && isset($params['perPage'])) {
-            $params['limit'] = $params['perPage'];
-            $params['offset'] = ($params['page'] - 1) * $params['perPage'];
+            $params['limit'] = (int)$params['perPage'];
+            $params['offset'] = ((int)$params['page'] - 1) * (int)$params['perPage'];
         }
 
+        $bindings = [];
         $and = '';
-        $sort = '';
-        $pagination = '';
 
+        // Build a secure search clause using placeholders.
         if (isset($params['search']) && $params['search']) {
             $search = $params['search'];
-            $and .= " AND (";
-            $and .= implode(" OR ", array_map(fn($column) => "$column LIKE '%$search%'", static::getSearchableColumns()));
-            $and .= " OR ";
-            $and .= implode(" OR ", array_map(fn($column) => "levenshtein($column, '$search') < 3", static::getSearchableColumns()));
-            $and .= ")";
+            $searchClauseParts = [];
+            foreach (static::getSearchableColumns() as $column) {
+                // Validate the column name to allow only safe characters.
+                if (preg_match('/^[a-zA-Z0-9_]+$/', $column)) {
+                    $searchClauseParts[] = "$column LIKE ?";
+                    $bindings[] = "%$search%";
+                }
+            }
+            foreach (static::getSearchableColumns() as $column) {
+                if (preg_match('/^[a-zA-Z0-9_]+$/', $column)) {
+                    $searchClauseParts[] = "levenshtein($column, ?) < 3";
+                    $bindings[] = $search;
+                }
+            }
+            if (!empty($searchClauseParts)) {
+                $and .= " AND (" . implode(" OR ", $searchClauseParts) . ")";
+            }
         }
 
+        // Build a secure sort clause by validating each sort option.
+        $sort = '';
         if (isset($params['sort']) && $params['sort']) {
-            $sort .= " ORDER BY ";
-            $sort .= implode(", ", array_map(fn($sort) => "{$sort['column']} {$sort['order']}", $params['sort']));
+            $sortParts = [];
+            foreach ($params['sort'] as $sortOption) {
+                $column = $sortOption['column'] ?? '';
+                $order = strtoupper($sortOption['order'] ?? '');
+                // Only allow column names with alphanumerics and underscores, and orders ASC/DESC.
+                if (preg_match('/^[a-zA-Z0-9_]+$/', $column) && in_array($order, ['ASC', 'DESC'])) {
+                    $sortParts[] = "$column $order";
+                }
+            }
+            if (!empty($sortParts)) {
+                $sort .= " ORDER BY " . implode(", ", $sortParts);
+            }
         }
 
+        // Build pagination clause.
+        $pagination = '';
         if (isset($params['limit']) && $params['limit']) {
-            $pagination .= " LIMIT " . $params['limit'];
+            $limit = (int)$params['limit'];
+            $pagination .= " LIMIT $limit";
         }
-
         if (isset($params['offset']) && $params['offset']) {
-            $pagination .= " OFFSET " . $params['offset'];
+            $offset = (int)$params['offset'];
+            $pagination .= " OFFSET $offset";
         }
 
-        $sqlData = "SELECT * FROM " . static::getTableName() . " WHERE 1 = 1 $and $sort $pagination";
-        $sqlCount = "SELECT COUNT(*) as count FROM " . static::getTableName() . " WHERE 1 = 1 $and";
+        $table = static::getTableName();
+        $sqlData = "SELECT * FROM $table WHERE 1 = 1 $and $sort $pagination";
+        $sqlCount = "SELECT COUNT(*) as count FROM $table WHERE 1 = 1 $and";
 
-        $results = static::$db->query($sqlData);
-        $count = static::$db->query($sqlCount);
+        $results = static::$db->query($sqlData, $bindings);
+        $countResult = static::$db->query($sqlCount, $bindings);
+        $totalCount = isset($countResult[0]['count']) ? (int)$countResult[0]['count'] : 0;
+        $lastPage = $params['perPage'] > 0 ? (int)ceil($totalCount / $params['perPage']) : 1;
 
         return [
-            'page' => (int) $params['page'],
-            'perPage' => (int) $params['perPage'],
-            'lastPage' => (int) ceil($count[0]['count'] / $params['perPage']),
-            'total' => (int) isset($count[0]['count']) ? $count[0]['count'] : 0,
+            'page' => (int)$params['page'],
+            'perPage' => (int)$params['perPage'],
+            'lastPage' => $lastPage,
+            'total' => $totalCount,
             'data' => array_map(fn($row) => new static($row), $results)
         ];
     }
@@ -315,12 +345,17 @@ abstract class Model
      * Retrieve the first record matching the given params.
      *
      * @param array $params
-     * @return static|null
+     * @return array
      * @throws Exception
      */
-    public static function findOneBy(array $params): ?static
+    public static function findOneBy(array $params): array
     {
-        $results = static::findAllBy($params);
-        return count($results) > 0 ? $results[0] : null;
+        $result = static::findAllBy($params);
+
+        if (isset($result['data']) && count((array) $result['data']) > 0) {
+            $result['data'] = array_slice((array) $result['data'], 0, 1);
+        }
+
+        return $result;
     }
 }

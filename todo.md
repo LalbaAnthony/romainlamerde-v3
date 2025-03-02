@@ -1,16 +1,11 @@
 New:
-    - [x] Refaire fonctionner chaque feature de la v2
-    - [x] Re add layout
-    - [x] Faire dossier view/api dans controllers
-    - [x] Séparer entête HTML et header stylisé de la page + Remplacer les $this->layout('top'); et les $this->layout('bottom'); par des Compoent::display() (utiliser ob_start et ob_get_clean ?)
     - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
     - [ ] Implement rollbacks for migrations, seeders, models save, ...
     - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
-    - [ ] Refaire tout les models pour évitier les injections SQL (findAll, ...)
     - [ ] Surcharger le findAll dans les models pour table ayant dans parents en utilisant parent::findAll
 	- [ ] Trouver une solution pour les relations
-    - [ ] Changer system d'erreur pour ne plus avoir de Exeption
     - [ ] Controllers
+    - [ ] Authentification
     - [ ] API
     - [ ] Error handling: make it more user friendly, create exeptions for each type of error
     - [ ] Pas Interface admin mais boutons en plus pour les admins

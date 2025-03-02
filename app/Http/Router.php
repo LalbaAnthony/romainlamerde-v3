@@ -36,7 +36,7 @@ class Router
         $method = $this->request->method;
 
         if (!isset($this->routes[$uri])) {
-            $this->response(404, ['error' => 'Page not found']);
+            $this::redirect('/404');
         }
 
         $route = $this->routes[$uri];
