@@ -19,7 +19,6 @@ return [
             'type' => 'view',
             'path' => 'View\\ErrorController@index',
             'hooks' => [
-                'before' => ['components' => ['header']],
                 'after' => ['components' => ['footer']],
             ]
         ],

@@ -93,7 +93,6 @@ trait Utils
      */
     private function openHtml(): void
     {
-        echo "hey";
         echo '<!DOCTYPE html>';
         echo '<html lang="fr">';
         echo '<head>';

@@ -99,7 +99,7 @@ class Router
 
         if (isset($this->route['hooks'][$timing]['components'])) {
             foreach ($this->route['hooks'][$timing]['components'] as $component) {
-                Component::display($component,  [], ['css' => true]);
+                Component::display($component, [], ['css' => true]);
             }
         }
     }
