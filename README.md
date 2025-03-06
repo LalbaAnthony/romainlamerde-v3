@@ -16,12 +16,6 @@ PHP.
 Usage example:
 
 ```php
-// Model initialization
-$db = new Database();
-Model::setDatabase($db);
-
-require_once 'models/Quote.class.php';
-
 // --- Creating a new Quote ---
 $quote = new Quote([
     // ...
