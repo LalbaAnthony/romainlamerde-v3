@@ -1,4 +1,5 @@
 New:
+    - [ ] Use headers_sent()
     - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
     - [ ] Implement rollbacks for migrations, seeders, models save, ...
     - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
