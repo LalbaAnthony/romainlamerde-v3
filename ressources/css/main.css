@@ -31,7 +31,6 @@
 }
 
 body {
-    min-height: 100vh;
     font-family: "Inter", "Roboto", sans-serif;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
@@ -130,7 +129,7 @@ body {
 }
 
 main {
-    min-height: 100vh;
+    min-height: 50vh;
 }
 
 /* DESKTOP */

@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Http\Utils;
+
 abstract class Controller
 {
-    use \App\Http\Utils;
+    use Utils;
 
     const DEFAULT_PER_PAGE = 10;
     const DEFAULT_PAGE = 1;

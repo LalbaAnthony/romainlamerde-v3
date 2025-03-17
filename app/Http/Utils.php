@@ -13,6 +13,8 @@ trait Utils
      */
     public static function redirect(string $uri = '/'): void
     {
+        if (headers_sent()) return;
+
         header('Location: ' . APP_URL . $uri);
         exit;
     }
@@ -24,6 +26,8 @@ trait Utils
      */
     public static function error(): void
     {
+        if (headers_sent()) return;
+
         header('HTTP/1.1 404 Not Found');
         exit;
     }
@@ -38,6 +42,8 @@ trait Utils
      */
     public function response(int $status, mixed $data = null, array $headers = ['methods' => ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 'origin' => '*', 'cache' => 0]): void
     {
+        if (headers_sent()) return;
+
         http_response_code($status);
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
         header("Content-type: application/json; charset=utf-8");

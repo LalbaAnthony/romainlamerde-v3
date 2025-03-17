@@ -1,5 +1,4 @@
 New:
-    - [ ] Use headers_sent()
     - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
     - [ ] Implement rollbacks for migrations, seeders, models save, ...
     - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
@@ -16,13 +15,8 @@ New:
     - [ ] Traiter todo du code
 
 From RLM v1:
-    - [ ] Existant
-    - [ ] Faire des vue pour les tables enfants pour avoir ordre alphabet et last non renseignée
     - [ ] Faire système de question/réponse et traduire celles qui sont concerné
     - [ ] Terminer de mettre en place les categories partout (insert, update, ...)
-    - [ ] Chg le update de dao pour prendre les tables enfants
-    - [ ] Add table enfants admin
-    - [ ] merge Des fct
     - [ ] Faire en sorte que l'auteur par défault c'est le roi du site
     - [ ] Pastilles + sort avec pastilles + filter
     - [ ] Favoris avec cookies

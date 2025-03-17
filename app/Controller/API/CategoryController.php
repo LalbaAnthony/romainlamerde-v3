@@ -6,7 +6,6 @@ use App\Http\Request;
 use App\Models\Category;
 use App\Controller\Controller;
 
-
 class CategoryController extends Controller
 {
     public function index(Request $request)

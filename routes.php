@@ -14,10 +14,14 @@ return [
             ]
         ],
     ],
-    '/404' => [
+    '/list' => [
         'GET'  => [
             'type' => 'view',
-            'path' => 'View\\ErrorController@index',
+            'path' => 'View\\ListController@index',
+            'hooks' => [
+                'before' => ['components' => ['header']],
+                'after' => ['components' => ['footer']],
+            ]
         ],
     ],
     // =================================================
@@ -27,6 +31,21 @@ return [
         'GET'  => [
             'type' => 'api',
             'path' => 'API\\CategoryController@index',
+        ],
+    ],
+    // =================================================
+    // Error
+    // =================================================
+    '/404' => [
+        'GET'  => [
+            'type' => 'view',
+            'path' => 'View\\ErrorController@notFound',
+        ],
+    ],
+    '/500' => [
+        'GET'  => [
+            'type' => 'view',
+            'path' => 'View\\ErrorController@serverError',
         ],
     ],
 ];

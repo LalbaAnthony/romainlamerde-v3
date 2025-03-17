@@ -42,7 +42,7 @@ class Router
         $route = $this->routes[$uri];
 
         if (!isset($route[$method])) {
-            $this->response(405, ['error' => 'Method not allowed']);
+            $this->response(405, ['error' => 'Method not allowed. Allowed methods: ' . implode(', ', array_keys($route))]);
         }
 
         $this->route = $route[$method];
@@ -95,7 +95,7 @@ class Router
      */
     public function hook(string $timing = 'before'): void
     {
-        if (!isset($this->route['hooks'][$timing]) || !$this->route['hooks'][$timing] || empty($this->route['hooks'][$timing])) return;
+        if (!isset($this->route['hooks'][$timing]) || !$this->route['hooks'][$timing]) return;
 
         if (isset($this->route['hooks'][$timing]['components'])) {
             foreach ($this->route['hooks'][$timing]['components'] as $component) {
