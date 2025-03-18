@@ -10,6 +10,7 @@ define('APP_DESCRIPTION', 'Site répertoriant toutes les bêtises dites par Roma
 define('APP_AUTHOR', 'Anthony Lalba');
 define('APP_CENSORSHIP', false);
 define('APP_VERSION', '3.0.1');
+define('APP_LANG', 'fr');
 
 
 /**

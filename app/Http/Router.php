@@ -8,6 +8,7 @@ use App\Component;
 class Router
 {
     use Utils;
+    use Html;
 
     private $request;
     private $routes;
@@ -112,10 +113,10 @@ class Router
     public function dispatch(): void
     {
         $this->find();
-        if ($this->route['type'] === 'view') $this->openHtml();
+        if ($this->route['type'] === 'view') self::openHtml();
         $this->hook('before');
         $this->execute();
         $this->hook('after');
-        if ($this->route['type'] === 'view') $this->closeHtml();
+        if ($this->route['type'] === 'view') self::closeHtml();
     }
 }

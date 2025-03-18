@@ -13,11 +13,11 @@
     --danger: #cf0d0d;
 
     --gradient-full: linear-gradient(to right,
-    var(--red) 20%,
-    var(--orange) 20%, var(--orange) 40%,
-    var(--yellow) 40%, var(--yellow) 60%,
-    var(--green) 60%, var(--green) 80%,
-    var(--blue) 80%);
+            var(--red) 20%,
+            var(--orange) 20%, var(--orange) 40%,
+            var(--yellow) 40%, var(--yellow) 60%,
+            var(--green) 60%, var(--green) 80%,
+            var(--blue) 80%);
 }
 
 *,
@@ -31,6 +31,7 @@
 }
 
 body {
+    min-height: 100vh;
     font-family: "Inter", "Roboto", sans-serif;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
