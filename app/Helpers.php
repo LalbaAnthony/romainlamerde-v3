@@ -64,4 +64,35 @@ class Helpers
         $string = trim($string, '-');
         return $string;
     }
+
+    /**
+     * Return a string with a limit of n characters plus a suffix.
+     *
+     * @param string $string
+     * @param int $limit
+     * @param string $suffix
+     * @return string
+     */
+    public static function stringLimit(string $string, int $limit = 100, string $suffix = '...'): string
+    {
+        if (!$string || empty($string)) return '';
+        if ($limit < 0) return $string;
+
+        if (strlen($string) > $limit) {
+            return substr($string, 0, $limit) . $suffix;
+        }
+
+        return $string;
+    }
+
+    /**
+     * Get the current URL.
+     *
+     * @return string
+     */
+    public static function currentUrl(): string
+    {
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+        return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    }
 }
