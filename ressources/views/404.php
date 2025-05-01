@@ -30,6 +30,7 @@ use App\Component;
     }
 
     .error-description {
+        text-align: center;
         font-size: 20px;
     }
 
