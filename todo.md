@@ -7,6 +7,8 @@ Front:
 
 Back:
 	- [ ] Trouver une solution pour les relations
+    	- [ ] https://chatgpt.com/share/6818c1bb-7840-8008-b1b2-ec812f1e880a
+    	- [ ] https://claude.ai/public/artifacts/undefined
     - [ ] Retirer tout le code fait du front dans le back
     - [ ] Faire proto de list pour admin
     - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
