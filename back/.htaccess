@@ -1,7 +1,7 @@
 RewriteEngine On
 
 # If your project is in a subfolder, specify the RewriteBase
-RewriteBase /projects/romainlamerde-v3/
+RewriteBase /projects/romainlamerde-v3/back
 
 # If the requested resource does not exist
 RewriteCond %{REQUEST_FILENAME} !-f

@@ -14,7 +14,7 @@ if (APP_DEBUG) {
     error_reporting(E_ALL);
 }
 
-if (APP_ENV !== 'development' || APP_ENV === 'production') {
+if (APP_ENV !== 'development') {
     print "This script can only be run in development mode.\n";
     exit;
 }

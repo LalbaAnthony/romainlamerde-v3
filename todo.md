@@ -1,9 +1,16 @@
-New:
-    - [ ] Fonctionnalité changement couleurs de header pour pride month
+Front:
+    - [ ] Installer Quasar
+    - [ ] Setup Quasar
+    - [ ] Make interface with Quasar
+    - [ ] Link Quasar with backend
+    - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
+
+Back:
+    - [ ] Setup back for run in back/
+    - [ ] Retirer tout le code fait du front dans le back
 	- [ ] Trouver une solution pour les relations
     	- [ ] https://chatgpt.com/share/6818c1bb-7840-8008-b1b2-ec812f1e880a
     	- [ ] https://claude.ai/public/artifacts/undefined
-    - [ ] Retirer tout le code fait du front dans le back
     - [ ] Faire proto de list pour admin
     - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
     - [ ] Implement rollbacks for migrations, seeders, models save, ...

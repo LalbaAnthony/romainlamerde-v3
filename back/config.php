@@ -16,11 +16,10 @@ define('APP_LANG', 'fr');
 /**
  * App configuration
  */
-define('APP_ROOT', '/projects/romainlamerde-v3');
-define('APP_URL', 'http://localhost/projects/romainlamerde-v3');
+define('APP_ROOT', '/projects/romainlamerde-v3/back');
+define('APP_URL', 'http://localhost/projects/romainlamerde-v3/back');
 define('APP_DEBUG', true);
 define('APP_ENV', 'development'); // 'development' or 'production'
-define('APP_SECRET_KEY', 'xxxxxxxxxxxxxxxxxxxxx');
 
 /**
  * Database settings
