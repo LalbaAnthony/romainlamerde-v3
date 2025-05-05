@@ -6,7 +6,6 @@ Front:
     - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
 
 Back:
-    - [ ] Setup back for run in back/
     - [ ] Retirer tout le code fait du front dans le back
 	- [ ] Trouver une solution pour les relations
     	- [ ] https://chatgpt.com/share/6818c1bb-7840-8008-b1b2-ec812f1e880a

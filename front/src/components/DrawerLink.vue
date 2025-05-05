@@ -1,20 +1,11 @@
 <template>
-  <q-item
-    clickable
-    tag="a"
-    target="_blank"
-    :href="props.link"
-  >
-    <q-item-section
-      v-if="props.icon"
-      avatar
-    >
-      <q-icon :name="props.icon" />
+  <q-item clickable tag="a" :href="props.link">
+    <q-item-section v-if="props.icon" avatar>
+      <q-icon :name="props.icon" size="24px" />
     </q-item-section>
 
     <q-item-section>
       <q-item-label>{{ props.title }}</q-item-label>
-      <q-item-label caption>{{ props.caption }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>
