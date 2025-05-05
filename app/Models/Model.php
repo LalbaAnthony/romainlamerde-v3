@@ -80,7 +80,7 @@ abstract class Model
         $isUpdate = isset($this->$primaryKey) && !empty($this->$primaryKey);
         $attributes = $this->toArray();
 
-        foreach ($attributes as $column => $value) {
+        foreach ($attributes as $column => &$value) {
             if ($column === 'updated_at') $value = Helpers::currentDateTime();
             if ($column === 'created_at' && !$isUpdate) $value = Helpers::currentDateTime();
         }

@@ -1,10 +1,17 @@
-New:
-    - [ ] Fonctionnalité changement couleurs de header pour pride month
+Front:
+    - [ ] Installer Quasar
+    - [ ] Setup Quasar
+    - [ ] Make interface with Quasar
+    - [ ] Link Quasar with backend
+    - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
+
+Back:
+	- [ ] Trouver une solution pour les relations
+    - [ ] Retirer tout le code fait du front dans le back
+    - [ ] Faire proto de list pour admin
     - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
     - [ ] Implement rollbacks for migrations, seeders, models save, ...
-    - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
     - [ ] Surcharger le findAll dans les models pour table ayant dans parents en utilisant parent::findAll
-	- [ ] Trouver une solution pour les relations
     - [ ] Controllers
     - [ ] Authentification
     - [ ] API
