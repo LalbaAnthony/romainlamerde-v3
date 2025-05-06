@@ -1,7 +1,10 @@
+Stack: Quasar (with Google like style) + custom Laravel like
+
 Front:
-    - [ ] Installer Quasar
-    - [ ] Setup Quasar
-    - [ ] Make interface with Quasar
+    - [x] Installer Quasar
+    - [x] Setup Quasar
+    - [ ] Chg front font
+    - [ ] Make interface with Quasar: like spotify
     - [ ] Link Quasar with backend
     - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
 

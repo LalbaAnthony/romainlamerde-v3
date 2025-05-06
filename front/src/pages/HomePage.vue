@@ -1,9 +1,10 @@
 <template>
-  <q-page class="flex flex-center">
-    Home page here
+  <q-page>
+    <Suggesteds />
   </q-page>
 </template>
 
 <script setup>
-//
+import Suggesteds from 'components/SuggestedsComponent.vue'
+
 </script>
