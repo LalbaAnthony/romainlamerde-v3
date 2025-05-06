@@ -3,38 +3,24 @@
     <q-header :class="[$q.dark.isActive ? 'custom-header-dark' : 'custom-header-light']">
       <q-toolbar class="flex justify-between">
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleDrawer" />
-        <h1 class="text-h6">
-          Quasar App
-        </h1>
-        <q-avatar size="36px">
+        <q-avatar size="24px">
           <img src="https://cdn.quasar.dev/img/avatar.png">
         </q-avatar>
       </q-toolbar>
     </q-header>
 
     <q-drawer v-model="drawer" show-if-above>
-      <h6 class="q-my-none q-pa-md">
-        Quasar App
+      <h6 class="q-ma-none q-pa-md text-h6">
+        romainlamerde.com
       </h6>
-
       <q-separator />
-
       <q-list>
-        <q-item clickable tag="a" href="#">
+        <q-item v-for="menu in menus" :key="menu.name" clickable @click="$router.push({ name: menu.name })">
           <q-item-section avatar>
-            <q-icon name="settings" size="24px" />
+            <q-icon :name="menu.icon" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Settings</q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item clickable tag="a" href="#">
-          <q-item-section avatar>
-            <q-icon name="help" size="24px" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Help</q-item-label>
+            <q-item-label>{{ menu.label }}</q-item-label>
           </q-item-section>
         </q-item>
         <q-item clickable @click="toggleDarkMode">
@@ -52,18 +38,15 @@
       <router-view />
     </q-page-container>
 
-    <q-page-sticky position="bottom-right" :offset="[ 12, 12 ]">
-      <q-fab icon="add" direction="up" color="primary">
-        <q-fab-action @click="console.log('test')" color="accent" icon="person_add" />
-        <q-fab-action @click="console.log('test')" color="accent" icon="mail" />
-      </q-fab>
+    <q-page-sticky position="bottom-right" :offset="[12, 12]">
+      <q-btn fab icon="add" padding="12px" color="primary" @click="console.log('test')" />
     </q-page-sticky>
 
     <q-footer :class="[$q.dark.isActive ? 'custom-footer-dark' : 'custom-footer-light']">
-      <q-tabs v-model="tab" :indicator-color="[$q.dark.isActive ? 'primary' : 'primary']"
+      <q-tabs v-model="tab" dense no-caps :indicator-color="[$q.dark.isActive ? 'primary' : 'primary']"
         :active-color="[$q.dark.isActive ? 'text-grey' : 'primary']" class="text-grey-5">
-        <q-tab name="quotes" icon="chat" label="Citations" />
-        <q-tab name="favorits" icon="star" label="Favoris" />
+        <q-tab v-for="t in tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label">
+        </q-tab>
       </q-tabs>
     </q-footer>
   </q-layout>
@@ -76,7 +59,18 @@ import { useQuasar } from 'quasar';
 const $q = useQuasar();
 
 const drawer = ref(false)
-const tab = ref('alarms')
+const tab = ref('home')
+
+const menus = ref([
+  { name: 'settings', icon: 'settings', label: 'Paramètres' },
+  { name: 'info', icon: 'info', label: 'Infos' },
+])
+
+const tabs = ref([
+  { name: 'search', icon: 'search', label: 'Recherche' },
+  { name: 'home', icon: 'home', label: 'Accueil' },
+  { name: 'favorits', icon: 'favorite', label: 'Favoris' },
+])
 
 function toggleDrawer() {
   drawer.value = !drawer.value
