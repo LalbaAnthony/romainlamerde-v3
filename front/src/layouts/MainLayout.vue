@@ -8,8 +8,13 @@
           </q-avatar>
         </q-btn>
         <q-toolbar-title>
-          {{ $route.meta.name }}
+          <transition name="q-transition--fade">
+            <span :key="$route.meta.title">
+              {{ $route.meta.title }}
+            </span>
+          </transition>
         </q-toolbar-title>
+        <q-btn flat round dense icon="shuffle" class="q-ml-xs" @click="console.log('WIP')" />
         <q-btn flat round dense icon="search" class="q-ml-xs" @click="console.log('WIP')" />
         <q-btn flat round dense icon="add" class="q-ml-xs" @click="console.log('WIP')" />
       </q-toolbar>
@@ -58,8 +63,9 @@
       <router-view />
     </q-page-container>
 
-    <q-page-sticky position="bottom-right" :offset="[10, 10]">
-      <q-btn icon="keyboard_arrow_up" padding="12px" fab color="primary" @click="console.log('WIP')" />
+    <q-page-sticky position="bottom-right" :offset="[16, 16]">
+      <q-btn v-if="$route.name !== 'quotes.add'" :icon="menus.fabs[0].icon" padding="16px" fab color="primary"
+        :to="menus.fabs[0].path" />
     </q-page-sticky>
 
     <q-footer :class="[$q.dark.isActive ? 'custom-footer-dark' : 'custom-footer-light']">
@@ -95,8 +101,11 @@ const menus = ref({
   tabs: [
     { name: 'home', icon: 'home', label: 'Accueil', path: '/' },
     { name: 'search', icon: 'search', label: 'Recherche', path: '/search' },
-    { name: 'favorites', icon: 'favorite', label: 'Favoris', path: '/favorites' },
-    { name: 'add', icon: 'add', label: 'Ajouter', path: '/add' },
+    { name: 'favorites', icon: 'favorite', label: 'Favoris', path: '/quotes/favorites' },
+    { name: 'account', icon: 'person', label: 'Moi', path: '/account' },
+  ],
+  fabs: [
+    { name: 'add', icon: 'add', label: 'Ajouter', path: '/quotes/add' },
   ]
 })
 
@@ -109,10 +118,22 @@ function toggleDarkMode() {
 }
 
 watch(() => tab.value, val => {
-  if (val !== route.name) {
-    router.push({ name: val })
+  if (val === route.name) return
+  const menu = menus.value.tabs.find(m => m.name === val)
+  router.push({ path: menu.path })
+})
+
+watch(() => route.name, val => {
+  if (val === tab.value) return
+  const menu = menus.value.tabs.find(m => m.name === val)
+  if (menu) {
+    tab.value = menu.name
+  } else {
+    tab.value = 'home'
   }
 })
+
+
 </script>
 
 <style scoped>
