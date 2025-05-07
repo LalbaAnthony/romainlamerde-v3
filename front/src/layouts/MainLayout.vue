@@ -35,17 +35,18 @@
               <q-item-label>{{ m.label }}</q-item-label>
             </q-item-section>
           </q-item>
+          <q-separator />
           <q-item clickable @click="toggleDarkMode">
             <q-item-section avatar>
-              <q-icon :name="$q.dark.isActive ? 'dark_mode' : 'light_mode'" />
+              <q-icon :name="$q.dark.isActive ? 'light_mode' : 'dark_mode'" />
             </q-item-section>
             <q-item-section>
               <q-item-label>{{ $q.dark.isActive ? 'Light Mode' : 'Dark Mode' }}</q-item-label>
             </q-item-section>
           </q-item>
+          <q-separator />
         </q-list>
       </q-scroll-area>
-
       <div class="absolute-top" style="height: 75px">
         <div class="absolute-bottom flex bg-transparent">
           <q-avatar size="56px" class="q-mb-sm q-mr-sm">
@@ -71,7 +72,9 @@
     <q-footer :class="[$q.dark.isActive ? 'custom-footer-dark' : 'custom-footer-light']">
       <q-tabs v-model="tab" dense no-caps :indicator-color="$q.dark.isActive ? 'primary' : 'primary'"
         :active-color="$q.dark.isActive ? 'text-grey' : 'primary'" class="text-grey-5">
-        <q-tab v-for="t in menus.tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label" />
+        <!-- <q-tab v-for="t in menus.tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label" /> -->
+        <q-route-tab v-for="t in menus.tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label"
+          :to="t.route.path" />
       </q-tabs>
     </q-footer>
   </q-layout>
@@ -80,13 +83,11 @@
 <script setup>
 import { ref } from 'vue'
 import { useQuasar } from 'quasar'
-import { watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import Suggesteds from 'components/SuggestedsComponent.vue'
 
 const $q = useQuasar();
 const route = useRoute()
-const router = useRouter()
 
 const tab = ref(route.name || 'home')
 const drawerOpened = ref(false)
@@ -94,8 +95,8 @@ const drawerOpened = ref(false)
 const menus = ref({
   drawers: [
     { name: 'account', icon: 'person', label: 'Moi', route: { name: 'account.base', path: '/account' } },
-    { name: 'settings', icon: 'settings', label: 'Paramètres', route: { name: 'account.settings', path: '/account/settings' } },
     { name: 'infos', icon: 'info', label: 'Infos', route: { name: 'infos', path: '/infos' } },
+    { name: 'settings', icon: 'settings', label: 'Paramètres', route: { name: 'account.settings', path: '/account/settings' } },
   ],
   tabs: [
     { name: 'home', icon: 'home', label: 'Accueil', route: { name: 'home', path: '/' } },
@@ -115,21 +116,6 @@ function toggleDrawer() {
 function toggleDarkMode() {
   $q.dark.set(!$q.dark.isActive);
 }
-
-watch(() => tab.value, val => {
-  const menu = menus.value.tabs.find(m => m.name === val)
-  if (menu.route.name === route.name) return // skip if already on the same route
-  router.push({ path: menu.route.path })
-})
-
-// watch(() => route.name, val => {
-//   const menu = menus.value.tabs.find(m => m.name === val)
-//   if (menu) {
-//     tab.value = menu.name
-//   } else {
-//     tab.value = 'home'
-//   }
-// })
 
 </script>
 

@@ -3,8 +3,7 @@ Stack: Quasar (with Google like style) + custom Laravel like
 Front:
     - [x] Installer Quasar
     - [x] Setup Quasar
-    - [ ] Reparer tabs avec watches etc
-    - [ ] Déplacer darkmode button tout en bas du drawer
+    - [x] Reparer tabs avec watches etc
     - [ ] Make interface with Quasar: like spotify
     - [ ] Chg front font
     - [ ] Link Quasar with backend
