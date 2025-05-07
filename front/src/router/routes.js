@@ -7,7 +7,7 @@ const routes = [
         name: 'home',
         path: '',
         component: () => import('pages/HomePage.vue'),
-        meta: { title: '' }
+        meta: { title: 'Accueil' }
       },
       {
         name: 'search',
@@ -47,7 +47,7 @@ const routes = [
             name: 'quotes.details',
             path: ':id',
             component: () => import('pages/quotes/DetailsPage.vue'),
-            meta: { title: '' },
+            meta: { title: 'Détails' },
           }
         ]
       },

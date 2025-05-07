@@ -23,16 +23,16 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="drawerOpened" :width="200" :breakpoint="500">
+    <q-drawer v-model="drawerOpened" :width="200" :breakpoint="500" show-if-above>
       <q-scroll-area style="height: calc(100% - 75px); margin-top: 75px;">
         <q-list padding>
-          <q-item v-for="menu in menus.drawers" :key="menu.name" :active="route.name === menu.name" clickable
-            @click="$router.push({ path: menu.path })">
+          <q-item v-for="m in menus.drawers" :key="m.name" :active="route.name === m.route.name" clickable
+            @click="$router.push({ path: m.route.path })">
             <q-item-section avatar>
-              <q-icon :name="menu.icon" />
+              <q-icon :name="m.icon" />
             </q-item-section>
             <q-item-section>
-              <q-item-label>{{ menu.label }}</q-item-label>
+              <q-item-label>{{ m.label }}</q-item-label>
             </q-item-section>
           </q-item>
           <q-item clickable @click="toggleDarkMode">
@@ -64,15 +64,14 @@
     </q-page-container>
 
     <q-page-sticky position="bottom-right" :offset="[16, 16]">
-      <q-btn v-if="$route.name !== 'quotes.add'" :icon="menus.fabs[0].icon" padding="16px" fab color="primary"
-        :to="menus.fabs[0].path" />
+      <q-btn v-if="$route.name !== menus.fabs[0].route.name" :icon="menus.fabs[0].icon" padding="16px" fab
+        color="primary" :to="menus.fabs[0].route.path" />
     </q-page-sticky>
 
     <q-footer :class="[$q.dark.isActive ? 'custom-footer-dark' : 'custom-footer-light']">
       <q-tabs v-model="tab" dense no-caps :indicator-color="$q.dark.isActive ? 'primary' : 'primary'"
         :active-color="$q.dark.isActive ? 'text-grey' : 'primary'" class="text-grey-5">
-        <q-tab v-for="t in menus.tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label" :to="t.path">
-        </q-tab>
+        <q-tab v-for="t in menus.tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label" />
       </q-tabs>
     </q-footer>
   </q-layout>
@@ -94,18 +93,18 @@ const drawerOpened = ref(false)
 
 const menus = ref({
   drawers: [
-    { name: 'account', icon: 'person', label: 'Mon compte', path: '/account' },
-    { name: 'settings', icon: 'settings', label: 'Paramètres', path: '/settings' },
-    { name: 'infos', icon: 'info', label: 'Infos', path: '/infos' },
+    { name: 'account', icon: 'person', label: 'Moi', route: { name: 'account.base', path: '/account' } },
+    { name: 'settings', icon: 'settings', label: 'Paramètres', route: { name: 'account.settings', path: '/account/settings' } },
+    { name: 'infos', icon: 'info', label: 'Infos', route: { name: 'infos', path: '/infos' } },
   ],
   tabs: [
-    { name: 'home', icon: 'home', label: 'Accueil', path: '/' },
-    { name: 'search', icon: 'search', label: 'Recherche', path: '/search' },
-    { name: 'favorites', icon: 'favorite', label: 'Favoris', path: '/quotes/favorites' },
-    { name: 'account', icon: 'person', label: 'Moi', path: '/account' },
+    { name: 'home', icon: 'home', label: 'Accueil', route: { name: 'home', path: '/' } },
+    { name: 'search', icon: 'search', label: 'Recherche', route: { name: 'search', path: '/search' } },
+    { name: 'favorites', icon: 'favorite', label: 'Favoris', route: { name: 'quotes.favorites', path: '/quotes/favorites' } },
+    { name: 'account', icon: 'person', label: 'Moi', route: { name: 'account.base', path: '/account' } },
   ],
   fabs: [
-    { name: 'add', icon: 'add', label: 'Ajouter', path: '/quotes/add' },
+    { name: 'add', icon: 'add', label: 'Ajouter', route: { name: 'quotes.add', path: '/quotes/add' } },
   ]
 })
 
@@ -114,25 +113,23 @@ function toggleDrawer() {
 }
 
 function toggleDarkMode() {
-  $q.dark.set(!$q.dark.isActive); // Toggle
+  $q.dark.set(!$q.dark.isActive);
 }
 
 watch(() => tab.value, val => {
-  if (val === route.name) return
   const menu = menus.value.tabs.find(m => m.name === val)
-  router.push({ path: menu.path })
+  if (menu.route.name === route.name) return // skip if already on the same route
+  router.push({ path: menu.route.path })
 })
 
-watch(() => route.name, val => {
-  if (val === tab.value) return
-  const menu = menus.value.tabs.find(m => m.name === val)
-  if (menu) {
-    tab.value = menu.name
-  } else {
-    tab.value = 'home'
-  }
-})
-
+// watch(() => route.name, val => {
+//   const menu = menus.value.tabs.find(m => m.name === val)
+//   if (menu) {
+//     tab.value = menu.name
+//   } else {
+//     tab.value = 'home'
+//   }
+// })
 
 </script>
 
