@@ -8,17 +8,21 @@
           </q-avatar>
         </q-btn>
         <q-toolbar-title>
-          {{ $route.meta.title }}
+          {{ $route.meta.name }}
         </q-toolbar-title>
         <q-btn flat round dense icon="search" class="q-ml-xs" @click="console.log('WIP')" />
         <q-btn flat round dense icon="add" class="q-ml-xs" @click="console.log('WIP')" />
       </q-toolbar>
+      <q-toolbar inset style="padding: 0 !important;">
+        <Suggesteds />
+      </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="drawer" :width="200" :breakpoint="500">
+    <q-drawer v-model="drawerOpened" :width="200" :breakpoint="500">
       <q-scroll-area style="height: calc(100% - 75px); margin-top: 75px;">
         <q-list padding>
-          <q-item v-for="menu in menus" :key="menu.name" clickable @click="$router.push({ path: menu.path })">
+          <q-item v-for="menu in menus.drawers" :key="menu.name" :active="route.name === menu.name" clickable
+            @click="$router.push({ path: menu.path })">
             <q-item-section avatar>
               <q-icon :name="menu.icon" />
             </q-item-section>
@@ -61,7 +65,7 @@
     <q-footer :class="[$q.dark.isActive ? 'custom-footer-dark' : 'custom-footer-light']">
       <q-tabs v-model="tab" dense no-caps :indicator-color="$q.dark.isActive ? 'primary' : 'primary'"
         :active-color="$q.dark.isActive ? 'text-grey' : 'primary'" class="text-grey-5">
-        <q-tab v-for="t in tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label">
+        <q-tab v-for="t in menus.tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label" :to="t.path">
         </q-tab>
       </q-tabs>
     </q-footer>
@@ -70,34 +74,45 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useQuasar } from 'quasar';
+import { useQuasar } from 'quasar'
+import { watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import Suggesteds from 'components/SuggestedsComponent.vue'
 
 const $q = useQuasar();
+const route = useRoute()
+const router = useRouter()
 
-const drawer = ref(false)
-const tab = ref('home')
+const tab = ref(route.name || 'home')
+const drawerOpened = ref(false)
 
-const menus = ref([
-  { name: 'account', icon: 'person', label: 'Mon compte', path: '/account' },
-  { name: 'settings', icon: 'settings', label: 'Paramètres', path: '/settings' },
-  { name: 'infos', icon: 'info', label: 'Infos', path: '/infos' },
-])
-
-const tabs = ref([
-  { name: 'home', icon: 'home', label: 'Accueil', callback: () => console.log('WIP') },
-  { name: 'search', icon: 'search', label: 'Recherche', callback: () => console.log('WIP') },
-  { name: 'favorites', icon: 'favorite', label: 'Favoris' },
-  { name: 'add', icon: 'add', label: 'Ajouter', callback: () => console.log('WIP') },
-])
-
+const menus = ref({
+  drawers: [
+    { name: 'account', icon: 'person', label: 'Mon compte', path: '/account' },
+    { name: 'settings', icon: 'settings', label: 'Paramètres', path: '/settings' },
+    { name: 'infos', icon: 'info', label: 'Infos', path: '/infos' },
+  ],
+  tabs: [
+    { name: 'home', icon: 'home', label: 'Accueil', path: '/' },
+    { name: 'search', icon: 'search', label: 'Recherche', path: '/search' },
+    { name: 'favorites', icon: 'favorite', label: 'Favoris', path: '/favorites' },
+    { name: 'add', icon: 'add', label: 'Ajouter', path: '/add' },
+  ]
+})
 
 function toggleDrawer() {
-  drawer.value = !drawer.value
+  drawerOpened.value = !drawerOpened.value
 }
 
 function toggleDarkMode() {
   $q.dark.set(!$q.dark.isActive); // Toggle
 }
+
+watch(() => tab.value, val => {
+  if (val !== route.name) {
+    router.push({ name: val })
+  }
+})
 </script>
 
 <style scoped>
