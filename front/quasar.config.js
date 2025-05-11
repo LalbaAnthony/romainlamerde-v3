@@ -149,12 +149,12 @@ export default defineConfig((/* ctx */) => {
       // extendGenerateSWOptions (cfg) {},
       // extendInjectManifestOptions (cfg) {}
       manifest: {
-        name: 'My App',
-        short_name: 'App',
+        name: 'romainlamerde.com',
+        short_name: 'RLM',
         start_url: '/',
         display: 'standalone',
-        background_color: '#ffffff',
-        theme_color: '#027be3',
+        background_color: '#1D1D1D',
+        theme_color: '#4436e6',
         icons: [ /* ... */ ]
       }
     },

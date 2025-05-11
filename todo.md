@@ -1,12 +1,13 @@
 Stack: Quasar (with Google like style) + custom Laravel like
 
 All:
-    - [x] Mise en preprod oavec pipe pour tester sur tel
+    - [ ] Add backend and BDD to preproduction
 
 Front:
     - [x] Installer Quasar
     - [x] Setup Quasar
     - [x] Reparer tabs avec watches etc
+    - [ ] Setup PWA
     - [ ] Make interface with Quasar: like spotify
     - [ ] Chg front font
     - [ ] Link Quasar with backend

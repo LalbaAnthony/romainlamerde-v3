@@ -65,7 +65,7 @@
     </q-page-container>
 
     <q-page-sticky position="bottom-right" :offset="[16, 16]">
-      <q-btn v-if="$route.name !== menus.fabs[0].route.name" :icon="menus.fabs[0].icon" padding="16px" fab
+      <q-btn v-if="$route.name !== menus.fabs[0].route.name" :icon="menus.fabs[0].icon" size="sm" fab
         color="primary" :to="menus.fabs[0].route.path" />
     </q-page-sticky>
 
