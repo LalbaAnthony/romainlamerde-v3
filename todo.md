@@ -1,5 +1,8 @@
 Stack: Quasar (with Google like style) + custom Laravel like
 
+All:
+    - [x] Mise en preprod oavec pipe pour tester sur tel
+
 Front:
     - [x] Installer Quasar
     - [x] Setup Quasar
