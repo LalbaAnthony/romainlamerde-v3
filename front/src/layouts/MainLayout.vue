@@ -71,7 +71,7 @@
 
     <q-footer :class="[$q.dark.isActive ? 'custom-footer-dark' : 'custom-footer-light']">
       <q-tabs v-model="tab" dense no-caps :indicator-color="$q.dark.isActive ? 'primary' : 'primary'"
-        :active-color="$q.dark.isActive ? 'text-grey' : 'primary'" class="text-grey-5">
+        :active-color="$q.dark.isActive ? 'text-grey' : 'primary'" class="text-grey-5 q-pt-sm">
         <!-- <q-tab v-for="t in menus.tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label" /> -->
         <q-route-tab v-for="t in menus.tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label"
           :to="t.route.path" />
