@@ -1,0 +1,67 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+  paths:
+    - ".github/workflows/*"
+    - "front/**"
+    - "back/**"
+
+jobs:
+  front_build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: |
+          cd front
+          npm ci
+
+      - name: Build PWA
+        run: |
+          cd front
+          npx quasar build -m pwa
+
+      - name: Setup SSH key
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.PROD_SERVER_PRIVATE_KEY }}
+
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.PROD_SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Deploy built files via rsync
+        run: |
+          rsync -avz --delete-after front/dist/pwa/ \
+            ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_IP }}:/var/www/html/${{ secrets.PROD_APACHE_FOLDER }}/front
+
+      - name: Fix ownership on server
+        run: |
+          ssh ${{ secrets.PROD_SERVER_USER }}@${{ secrets.PROD_SERVER_IP }} \
+            sudo chown -R www-data:www-data /var/www/html/${{ secrets.PROD_APACHE_FOLDER }}/front
+
+  apache_restart:
+    runs-on: ubuntu-latest
+    needs: front_build_and_deploy
+    if: success()
+
+    steps:
+      - name: Restart Apache server
+        uses: appleboy/ssh-action@v0.1.0
+        with:
+          host: ${{ secrets.PROD_SERVER_IP }}
+          username: ${{ secrets.PROD_SERVER_USER }}
+          key: ${{ secrets.PROD_SERVER_PRIVATE_KEY }}
+          script: |
+            sudo systemctl restart apache2
