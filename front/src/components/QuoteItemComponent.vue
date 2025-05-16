@@ -10,16 +10,12 @@
         </div>
       </q-card-section>
     </q-card-section>
-
     <q-separator />
-
-    <q-card-actions>
-      <q-btn flat round icon="event" />
-      <q-btn flat>
-        7:30PM
-      </q-btn>
+    <q-card-actions align="right">
+      <q-btn flat round icon="edit" />
+      <q-btn flat round icon="favorite" />
       <q-btn flat color="primary">
-        Reserve
+        Voir
       </q-btn>
     </q-card-actions>
   </q-card>
