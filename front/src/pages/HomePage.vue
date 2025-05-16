@@ -1,9 +1,10 @@
 <template>
-  <q-page class="flex flex-center">
-    <div class="q-pa-md row items-start q-gutter-md">
+  <q-page class="q-pa-md">
+    <div class="grid">
       <QuoteItem />
-
-
+      <QuoteItem />
+      <QuoteItem />
+      <QuoteItem />
     </div>
   </q-page>
 </template>
