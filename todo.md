@@ -7,7 +7,7 @@ Front:
     - [x] Installer Quasar
     - [x] Setup Quasar
     - [x] Reparer tabs avec watches etc
-    - [ ] Setup PWA
+    - [ ] Setup PWA (verif les colors sur tél)
     - [ ] Make interface with Quasar: like spotify
     - [ ] Chg front font
     - [ ] Link Quasar with backend
