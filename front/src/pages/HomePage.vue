@@ -3,7 +3,7 @@
     <q-toolbar inset style="padding: 0 !important;">
       <Suggesteds />
     </q-toolbar>
-    <div class="grid q-pa-lg">
+    <div class="grid q-pa-md">
       <QuoteItem />
       <QuoteItem />
       <QuoteItem />
