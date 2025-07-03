@@ -8,7 +8,7 @@ Front:
     - [x] Setup Quasar
     - [x] Reparer tabs avec watches etc
     - [ ] Setup PWA (verif les colors sur tél)
-    - [ ] Make interface with Quasar: like spotify
+    - [ ] Make interface with Quasar: like spotify, enhance with stitch.withgoogle.com like style
     - [ ] Chg front font
     - [ ] Link Quasar with backend
     - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
