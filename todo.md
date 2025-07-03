@@ -30,8 +30,7 @@ Front:
     - [ ] Make interface with Quasar: like spotify, enhance with stitch.withgoogle.com like style
     - [ ] Chg front font
     - [ ] Link Quasar with backend
-    - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
-
+    - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes
 
 From RLM v1:
     - [ ] Faire système de question/réponse et traduire celles qui sont concerné
