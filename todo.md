@@ -3,16 +3,6 @@ Stack: Quasar (with Google like style) + custom Laravel like
 All:
     - [ ] Add backend and BDD to preproduction
 
-Front:
-    - [x] Installer Quasar
-    - [x] Setup Quasar
-    - [x] Reparer tabs avec watches etc
-    - [ ] Setup PWA (verif les colors sur tél)
-    - [ ] Make interface with Quasar: like spotify, enhance with stitch.withgoogle.com like style
-    - [ ] Chg front font
-    - [ ] Link Quasar with backend
-    - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
-
 Back:
     - [ ] Retirer tout le code fait du front dans le back
 	- [ ] Trouver une solution pour les relations
@@ -31,6 +21,17 @@ Back:
     - [ ] htaccess apache pour redirection fichier static etc
     - [ ] Faire PHP doc sur classes et méthodes
     - [ ] Traiter todo du code
+
+Front:
+    - [x] Installer Quasar
+    - [x] Setup Quasar
+    - [x] Reparer tabs avec watches etc
+    - [ ] Setup PWA (verif les colors sur tél)
+    - [ ] Make interface with Quasar: like spotify, enhance with stitch.withgoogle.com like style
+    - [ ] Chg front font
+    - [ ] Link Quasar with backend
+    - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
+
 
 From RLM v1:
     - [ ] Faire système de question/réponse et traduire celles qui sont concerné
