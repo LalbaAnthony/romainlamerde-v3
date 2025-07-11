@@ -32,6 +32,12 @@ const routes = [
             meta: { title: 'Tous' }
           },
           {
+            name: 'quotes.random',
+            path: 'random',
+            component: () => import('pages/quotes/ListPage.vue'),
+            meta: { title: 'Aléatoire' }
+          },
+          {
             name: 'quotes.favorites',
             path: 'favorites',
             component: () => import('pages/quotes/ListPage.vue'),

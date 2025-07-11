@@ -14,9 +14,8 @@
             </span>
           </transition>
         </q-toolbar-title>
-        <q-btn flat round dense icon="shuffle" class="q-ml-xs" @click="console.log('WIP')" />
-        <q-btn flat round dense icon="search" class="q-ml-xs" @click="console.log('WIP')" />
-        <q-btn flat round dense icon="add" class="q-ml-xs" @click="console.log('WIP')" />
+        <q-btn v-for="m in menus.toolbar" :key="m.name" flat round dense :icon="m.icon" class="q-ml-xs"
+          @click="$router.push({ path: m.route.path })" />
       </q-toolbar>
     </q-header>
 
@@ -60,8 +59,8 @@
     </q-page-container>
 
     <q-page-sticky position="bottom-right" :offset="[16, 16]">
-      <q-btn v-if="$route.name !== menus.fabs[0].route.name" :icon="menus.fabs[0].icon" size="sm" fab
-        color="primary" :to="menus.fabs[0].route.path" />
+      <q-btn v-if="$route.name !== menus.fabs[0].route.name" :icon="menus.fabs[0].icon" size="sm" fab color="primary"
+        :to="menus.fabs[0].route.path" />
     </q-page-sticky>
 
     <q-footer :class="[$q.dark.isActive ? 'custom-footer-dark' : 'custom-footer-light']">
@@ -86,6 +85,11 @@ const tab = ref(route.name || 'home')
 const drawerOpened = ref(false)
 
 const menus = ref({
+  toolbar: [
+    { name: 'shuffle', icon: 'shuffle', label: 'Aléatoire', route: { name: 'quotes.random', path: '/quotes/random' } },
+    { name: 'search', icon: 'search', label: 'Recherche', route: { name: 'search', path: '/search' } },
+    { name: 'add', icon: 'add', label: 'Ajouter', route: { name: 'quotes.add', path: '/quotes/add' } },
+  ],
   drawers: [
     { name: 'account', icon: 'person', label: 'Moi', route: { name: 'account.base', path: '/account' } },
     { name: 'infos', icon: 'info', label: 'Infos', route: { name: 'infos', path: '/infos' } },
