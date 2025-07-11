@@ -42,7 +42,7 @@ trait Utils
      */
     public function response(int $status, mixed $data = null, array $headers = ['methods' => ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 'origin' => '*', 'cache' => 0]): void
     {
-        if (headers_sent()) return;
+        if (headers_sent()) die('Headers already sent. Cannot send response.');
 
         http_response_code($status);
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');

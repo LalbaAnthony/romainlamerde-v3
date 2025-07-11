@@ -17,10 +17,10 @@ if (APP_DEBUG) {
 }
 
 // Initialize the database and set it to the classes
-$db = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
-Model::setDatabase($db);
-Migrator::setDatabase($db);
-Seeder::setDatabase($db);
+$database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
+Model::setDatabase($database);
+Migrator::setDatabase($database);
+Seeder::setDatabase($database);
 
 session_start();
 

@@ -3,23 +3,13 @@ Stack: Quasar (with Google like style) + custom Laravel like
 All:
     - [ ] Add backend and BDD to preproduction
 
-Front:
-    - [x] Installer Quasar
-    - [x] Setup Quasar
-    - [x] Reparer tabs avec watches etc
-    - [ ] Setup PWA (verif les colors sur tél)
-    - [ ] Make interface with Quasar: like spotify
-    - [ ] Chg front font
-    - [ ] Link Quasar with backend
-    - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes  
-
 Back:
     - [ ] Set backend APP_ROOT with dirname(__FILE__)
     - [ ] Retirer tout le code fait du front dans le back
 	- [ ] Trouver une solution pour les relations
     	- [ ] https://chatgpt.com/share/6818c1bb-7840-8008-b1b2-ec812f1e880a
     	- [ ] https://claude.ai/public/artifacts/undefined
-    - [ ] Faire proto de list pour admin
+    - [ ] Faire list pour admin
     - [ ] Faire en sorte que les type de methode des routes soit reutilisé pour les header de réponses
     - [ ] Implement rollbacks for migrations, seeders, models save, ...
     - [ ] Surcharger le findAll dans les models pour table ayant dans parents en utilisant parent::findAll
@@ -32,6 +22,16 @@ Back:
     - [ ] htaccess apache pour redirection fichier static etc
     - [ ] Faire PHP doc sur classes et méthodes
     - [ ] Traiter todo du code
+
+Front:
+    - [x] Installer Quasar
+    - [x] Setup Quasar
+    - [x] Reparer tabs avec watches etc
+    - [ ] Setup PWA (verif les colors sur tél)
+    - [ ] Make interface with Quasar: like spotify, enhance with stitch.withgoogle.com like style
+    - [ ] Chg front font
+    - [ ] Link Quasar with backend
+    - [ ] S'inspirer de https://stoa.agoravita.app/ pour les sections/bento boxes
 
 From RLM v1:
     - [ ] Faire système de question/réponse et traduire celles qui sont concerné

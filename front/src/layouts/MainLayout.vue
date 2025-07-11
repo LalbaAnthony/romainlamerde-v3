@@ -18,9 +18,6 @@
         <q-btn flat round dense icon="search" class="q-ml-xs" @click="console.log('WIP')" />
         <q-btn flat round dense icon="add" class="q-ml-xs" @click="console.log('WIP')" />
       </q-toolbar>
-      <q-toolbar inset style="padding: 0 !important;">
-        <Suggesteds />
-      </q-toolbar>
     </q-header>
 
     <q-drawer v-model="drawerOpened" :width="200" :breakpoint="500" show-if-above>
@@ -35,7 +32,6 @@
               <q-item-label>{{ m.label }}</q-item-label>
             </q-item-section>
           </q-item>
-          <q-separator />
           <q-item clickable @click="toggleDarkMode">
             <q-item-section avatar>
               <q-icon :name="$q.dark.isActive ? 'light_mode' : 'dark_mode'" />
@@ -44,7 +40,6 @@
               <q-item-label>{{ $q.dark.isActive ? 'Light Mode' : 'Dark Mode' }}</q-item-label>
             </q-item-section>
           </q-item>
-          <q-separator />
         </q-list>
       </q-scroll-area>
       <div class="absolute-top" style="height: 75px">
@@ -70,11 +65,10 @@
     </q-page-sticky>
 
     <q-footer :class="[$q.dark.isActive ? 'custom-footer-dark' : 'custom-footer-light']">
-      <q-tabs v-model="tab" dense no-caps :indicator-color="$q.dark.isActive ? 'primary' : 'primary'"
-        :active-color="$q.dark.isActive ? 'text-grey' : 'primary'" class="text-grey-5 q-pt-sm">
-        <!-- <q-tab v-for="t in menus.tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label" /> -->
+      <q-tabs v-model="tab" dense no-caps indicator-color="primary"
+        :active-color="$q.dark.isActive ? 'white' : 'primary'" class="text-grey-5">
         <q-route-tab v-for="t in menus.tabs" :key="t.name" :name="t.name" :icon="t.icon" :label="t.label"
-          :to="t.route.path" />
+          :to="t.route.path" class="q-pt-sm" />
       </q-tabs>
     </q-footer>
   </q-layout>
@@ -84,7 +78,6 @@
 import { ref } from 'vue'
 import { useQuasar } from 'quasar'
 import { useRoute } from 'vue-router'
-import Suggesteds from 'components/SuggestedsComponent.vue'
 
 const $q = useQuasar();
 const route = useRoute()
