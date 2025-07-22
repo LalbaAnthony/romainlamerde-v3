@@ -103,7 +103,7 @@ class Component
         // Include CSS only if it hasn't been printed before
         if (
             $this->cssUrl && !in_array($this->cssUrl, self::$loadedCss) &&
-            ((isset($this->params['css']) && $this->params['css']))
+            (isset($this->params['css']) && $this->params['css'])
         ) {
             echo PHP_EOL . '<link rel="stylesheet" href="' . $this->cssUrl . '">' . PHP_EOL;
             self::$loadedCss[] = $this->cssUrl;
@@ -112,7 +112,7 @@ class Component
         // Include JS only if it hasn't been printed before
         if (
             $this->jsUrl && !in_array($this->jsUrl, self::$loadedJs) &&
-            ((isset($this->params['js']) && $this->params['js']))
+            (isset($this->params['js']) && $this->params['js'])
         ) {
             echo PHP_EOL . '<script src="' . $this->jsUrl . '"></script>' . PHP_EOL;
             self::$loadedJs[] = $this->jsUrl;

@@ -16,7 +16,7 @@ define('APP_LANG', 'fr');
 /**
  * App configuration
  */
-define('APP_ROOT', '/projects/romainlamerde-v3/back');
+define('APP_PATH', '/projects/romainlamerde-v3/back');
 define('APP_URL', 'http://localhost/projects/romainlamerde-v3/back');
 define('APP_DEBUG', true);
 define('APP_ENV', 'development'); // 'development' or 'production'

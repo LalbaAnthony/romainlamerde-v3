@@ -43,13 +43,13 @@ class Router
         $route = $this->routes[$uri];
 
         if (!isset($route[$method])) {
-            $this->response(405, ['error' => 'Method not allowed. Allowed methods: ' . implode(', ', array_keys($route))]);
+            $this->json(['error' => 'Method not allowed. Allowed methods: ' . implode(', ', array_keys($route))], 405);
         }
 
         $this->route = $route[$method];
 
         if (!isset($this->route['type']) && !in_array($this->route['type'], ['view', 'api'])) {
-            $this->response(500, ['error' => 'Invalid route type']);
+            $this->json(['error' => 'Invalid route type'], 500);
         }
     }
 
@@ -61,29 +61,29 @@ class Router
     public function execute(): void
     {
         if (!$this->route || empty($this->route)) {
-            $this->response(500, ['error' => 'No route found']);
+            $this->json(['error' => 'No route found'], 500);
         }
 
         if (!isset($this->route['path']) || !$this->route['path']) {
-            $this->response(500, ['error' => 'No route path found']);
+            $this->json(['error' => 'No route path found'], 500);
         }
 
         list($controllerPath, $controllerMethod) = explode('@', $this->route['path']);
 
         if (!$controllerPath || !$controllerMethod) {
-            $this->response(500, ['error' => 'Invalid route path']);
+            $this->json(['error' => 'Invalid route path'], 500);
         }
 
         $controllerClass = 'App\\Controller\\' . $controllerPath;
 
         if (!class_exists($controllerClass)) {
-            $this->response(500, ['error' => "{$controllerClass} does not exist. Check namespaces."]);
+            $this->json(['error' => "{$controllerClass} does not exist. Check namespaces."], 500);
         }
 
         $controller = new $controllerClass();
 
         if (!method_exists($controller, $controllerMethod)) {
-            $this->response(500, ['error' => "{$controllerMethod} method does not exist"]);
+            $this->json(['error' => "{$controllerMethod} method does not exist"], 500);
         }
 
         call_user_func([$controller, $controllerMethod], $this->request);

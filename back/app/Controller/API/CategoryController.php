@@ -24,6 +24,6 @@ class CategoryController extends Controller
 
         $status = count((array) $return['data']) > 0 ? 200 : 204;
 
-        $this->response($status, $return);
+        $this->json($return, $status);
     }
 }

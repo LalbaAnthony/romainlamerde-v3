@@ -4,7 +4,10 @@ All:
     - [ ] Add backend and BDD to preproduction
 
 Back:
-    - [ ] Set backend APP_ROOT with dirname(__FILE__)
+    - [ ] Set backend APP_URL with $_SERVER['HTTP_HOST'] or $_SERVER['SERVER_NAME']
+    - [ ] Set backend APP_PATH with dirname(__FILE__) or realpath(__DIR__)
+    - [ ] Add Logger:log everywhere
+    - [ ] Rework the whole Utils trait
     - [ ] Retirer tout le code fait du front dans le back
 	- [ ] Trouver une solution pour les relations
     	- [ ] https://chatgpt.com/share/6818c1bb-7840-8008-b1b2-ec812f1e880a
